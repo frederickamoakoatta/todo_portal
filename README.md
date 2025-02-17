@@ -16,6 +16,7 @@ Built using **Vite, React, and TypeScript**, this portal ensures a fast and effi
 - **Frontend:** Vite + React + TypeScript + Tailwind
 - **State Management & Data Fetching:** React Query
 - **Authentication:** AWS Cognito
+- **Deployment:** AWS Amplify
 - **Testing:** React Testing Library (RTL) & Vitest
 
 ## Getting Started

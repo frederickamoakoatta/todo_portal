@@ -1,0 +1,3 @@
+const COGNITO_CLIENT_ID = import.meta.env.VITE_COGNITO_CLIENT_ID;
+
+export {COGNITO_CLIENT_ID};
