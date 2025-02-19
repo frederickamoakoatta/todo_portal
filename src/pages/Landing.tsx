@@ -17,8 +17,8 @@ const Landing: React.FC = () => {
         <div className="flex items-center justify-center h-screen bg-gray-100">
             <div className="flex flex-col justify-center items-center text-center">
                 <Lottie animationData={todoAnimation} loop={false} alt="todo lottie animation" className="h-30 w-30"/>
-                <h1 className="text-4xl font-bold text-gray-800 mb-6">My Todo Portal</h1>
-                <p className="text-lg text-gray-600 mb-8">Get free <code>/api/todo</code> REST endpoints to build your first CRUD app.</p>
+                <h1 className="text-4xl font-bold text-gray-800 mb-6">Todo Portal</h1>
+                <p className="text-lg text-gray-600 mb-8">Get free <code>/apis/</code> REST endpoints to build your first Todo CRUD app.</p>
                 <Button className="w-full" size={'lg'} variant={'primary'} onClick={getStarted} disabled={isDisabled}>{isDisabled ? `Please wait` : `Get Started`}</Button>
             </div>
         </div>

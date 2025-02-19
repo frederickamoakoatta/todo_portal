@@ -1,11 +1,12 @@
 import './App.css'
 import {Route, Routes} from "react-router-dom";
 import {AuthProvider} from "react-oidc-context";
-import {COGNITO_CLIENT_ID} from "./util/util.ts";
+import {COGNITO_CLIENT_ID} from "./util/env-exports.ts";
 import Home from "./pages/Home.tsx"
 import Credentials from "./pages/Credentials.tsx";
 import Database from "./pages/Database.tsx";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 
 
 const cognitoAuthConfig = {
@@ -31,6 +32,7 @@ function App() {
                         <Route path="database" element={<Database/>}/>
                     </Route>
                 </Routes>
+                    <ReactQueryDevtools initialIsOpen={false} />
                 </QueryClientProvider>
             </AuthProvider>
         </>

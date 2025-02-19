@@ -4,22 +4,22 @@ import {useAuth} from "react-oidc-context";
 import Landing from "./Landing.tsx";
 import Loading from "./Loading.tsx";
 import Header from "../components/Header.tsx";
+import ErrorPage from "./Error.tsx";
+
 
 const Home = () => {
     const auth = useAuth();
-
-    console.log(auth.isLoading, auth.isAuthenticated, auth.activeNavigator);
 
     if (!auth.isAuthenticated && !auth.isLoading) {
         return <Landing/>;
     }
 
     if (auth.isLoading || auth.activeNavigator) {
-        return <Loading/>;
+        return <Loading fullPage/>;
     }
 
     if (auth.error) {
-        return <div>Encountering error... {auth.error.message}</div>;
+        return <ErrorPage message={auth.error.message}/>;
     }
 
     return (

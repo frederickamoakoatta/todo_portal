@@ -1,12 +1,14 @@
-import React from 'react';
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/loader.json";
 
+interface LoadingProps {
+    fullPage: boolean;
+}
 
-const Loading: React.FC = () => {
+const Loading = ({fullPage} : LoadingProps) => {
 
     return (
-        <div className="flex items-center justify-center h-screen bg-gray-100">
+        <div className={`flex items-center justify-center ${fullPage && 'h-screen'}`}>
                 <Lottie animationData={loadingAnimation} loop={true} alt="loading lottie animation" className="h-30 w-30"/>
         </div>
     );

@@ -1,4 +1,11 @@
-const COGNITO_CLIENT_ID = import.meta.env.VITE_COGNITO_CLIENT_ID;
-const BASE_URL = import.meta.env.VITE_BASE_API_URL;
+const getUser = () => {
+    try{
+        return JSON.parse(<string>sessionStorage.getItem('oidc.user:https://cognito-idp.us-west-1.amazonaws.com/us-west-1_ZEPalthpD:2i3upct4b1032aqodo0kvphvq'));
+    }
+    catch(err){
+        console.log(err);
+    }
+}
 
-export {COGNITO_CLIENT_ID, BASE_URL};
+
+export {getUser}

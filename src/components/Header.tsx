@@ -1,8 +1,9 @@
 import {useState} from "react";
-import logo from "../assets/Freddylogo.svg"
 import userAvatar from "../assets/user-avatar.json"
 import Lottie from "lottie-react";
 import {useAuth} from "react-oidc-context";
+import todoAnimation from "../assets/todo-animation-2.json";
+import {Link} from "react-router-dom";
 
 
 
@@ -19,7 +20,11 @@ const Header = () => {
     return (
         <>
             <header className="w-full fixed sticky-top bg-white shadow-md px-20 py-5 flex items-center justify-between">
-                <img src={logo} alt="Logo" className="h-10 w-auto"/>
+                <Link to="/" className="flex flex-row justify-between items-center">
+                    <Lottie animationData={todoAnimation} loop={false} alt="todo logo" className="h-12 w-12"/>
+                    <span className="text-lg"><strong>Todo</strong> Portal</span>
+                </Link>
+
 
                 <div className="flex items-center gap-3 cursor-pointer" onClick={() => setIsCollasped(!isCollasped)}>
                     <Lottie animationData={userAvatar} loop={true} alt="user avatar"
