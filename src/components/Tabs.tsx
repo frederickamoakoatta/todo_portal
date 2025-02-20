@@ -7,7 +7,7 @@ interface TabsProps {
 
 const Tabs = ({tab1, tab2} : TabsProps) => {
     return (
-        <div className="mx-auto">
+        <div className="mx-auto my-10 pt-5 bg-gray-50">
             {/* Tab Navigation */}
             <div className="flex border-b border-gray-300">
                 <NavLink to={tab1.toLowerCase()} className={({ isActive }) =>

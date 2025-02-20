@@ -7,7 +7,7 @@ const Credentials = () => {
         <>
             <CodeCard name={'Access Token'} value={auth.user?.access_token || '***'}/>
             <br/>
-            <CodeCard name={'Refresh Token'} value={auth.user?.refresh_token || '***'}/>
+            <CodeCard name={'User ID'} value={auth.user?.profile.sub || '***'}/>
         </>
     )
 }

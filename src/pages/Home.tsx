@@ -5,10 +5,14 @@ import Landing from "./Landing.tsx";
 import Loading from "./Loading.tsx";
 import Header from "../components/Header.tsx";
 import ErrorPage from "./Error.tsx";
+import WelcomeCard from "../components/Welcome.tsx";
+import {useContext} from "react";
+import DevInfoContext from "../context/DevInfoContext.ts";
 
 
 const Home = () => {
     const auth = useAuth();
+    const {displayValue} = useContext(DevInfoContext);
 
     if (!auth.isAuthenticated && !auth.isLoading) {
         return <Landing/>;
@@ -27,7 +31,8 @@ const Home = () => {
             { auth.isAuthenticated && <Header/> }
             {
                 auth.isAuthenticated &&
-                <main className="d-flex flex-column flex-wrap w-full px-20 py-25">
+                <main className="d-flex flex-column flex-wrap w-full px-20 py-30">
+                    { displayValue && <WelcomeCard/> }
                     <Tabs tab1={'Credentials'} tab2={'Database'}/>
                     <br/>
                     <Outlet/>
