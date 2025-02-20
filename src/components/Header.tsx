@@ -1,15 +1,17 @@
-import {useState} from "react";
+import {useContext, useState} from "react";
 import userAvatar from "../assets/user-avatar.json"
 import Lottie from "lottie-react";
 import {useAuth} from "react-oidc-context";
 import todoAnimation from "../assets/todo-animation-2.json";
 import {Link} from "react-router-dom";
+import DevInfoContext from "../context/DevInfoContext.ts";
 
 
 
 const Header = () => {
     const [isCollasped, setIsCollasped] = useState<boolean>(false);
     const auth = useAuth();
+    const {displayFunction} = useContext(DevInfoContext);
 
     const logout = async () => {
         window.location.href = '/'
@@ -19,7 +21,7 @@ const Header = () => {
 
     return (
         <>
-            <header className="w-full fixed sticky-top bg-white shadow-md px-20 py-5 flex items-center justify-between">
+            <header className="w-full fixed z-10 sticky-top bg-white shadow-md px-20 py-5 flex items-center justify-between">
                 <Link to="/" className="flex flex-row justify-between items-center">
                     <Lottie animationData={todoAnimation} loop={false} alt="todo logo" className="h-12 w-12"/>
                     <span className="text-lg"><strong>Todo</strong> Portal</span>
@@ -34,10 +36,10 @@ const Header = () => {
             </header>
             {
                 isCollasped &&
-                <div className="absolute right-20 mt-20 w-48 bg-white border-1 border-gray-200 rounded-lg shadow-lg z-10">
+                <div className="fixed right-20 mt-20 w-48 bg-white border-1 border-gray-200 rounded-lg shadow-lg z-10">
                     <ul>
-                        <li>
-                            <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
+                        <li className="cursor-pointer" onClick={() => displayFunction(true)}>
+                            <a className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Dev Info</a>
                         </li>
                         <li className="cursor-pointer" onClick={() => logout()}>
                             <a className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</a>

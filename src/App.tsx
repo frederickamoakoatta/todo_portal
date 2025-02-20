@@ -7,6 +7,8 @@ import Credentials from "./pages/Credentials.tsx";
 import Database from "./pages/Database.tsx";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
+import {useState} from "react";
+import DevInfoContext from './context/DevInfoContext.ts';
 
 
 const cognitoAuthConfig = {
@@ -21,17 +23,20 @@ const cognitoAuthConfig = {
 const queryClient = new QueryClient();
 
 function App() {
+    const [displayDevInfo, setDisplayDevInfo] = useState(true);
     return (
         <>
             <AuthProvider {...cognitoAuthConfig}>
                 <QueryClientProvider client={queryClient}>
-                <Routes>
-                    <Route path="/" element={<Home/>}>
-                        <Route index element={<Credentials/>}/>
-                        <Route path="credentials" element={<Credentials/>}/>
-                        <Route path="database" element={<Database/>}/>
-                    </Route>
-                </Routes>
+                    <DevInfoContext.Provider value={{displayValue: displayDevInfo, displayFunction: setDisplayDevInfo}}>
+                        <Routes>
+                            <Route path="/" element={<Home/>}>
+                                <Route index element={<Credentials/>}/>
+                                <Route path="credentials" element={<Credentials/>}/>
+                                <Route path="database" element={<Database/>}/>
+                            </Route>
+                        </Routes>
+                    </DevInfoContext.Provider>
                     <ReactQueryDevtools initialIsOpen={false} />
                 </QueryClientProvider>
             </AuthProvider>
