@@ -24,6 +24,7 @@ const queryClient = new QueryClient();
 
 function App() {
     const [displayDevInfo, setDisplayDevInfo] = useState(true);
+
     return (
         <>
             <AuthProvider {...cognitoAuthConfig}>

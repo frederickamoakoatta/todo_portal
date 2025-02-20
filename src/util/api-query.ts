@@ -16,6 +16,8 @@ const user = getUser();
 const headers = {
     "Content-Type": "application/json",
     'Authorization': `Bearer ${user?.access_token}`,
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "Authorization, Content-Type",
     'Accept': 'application/json',
     'userId': user?.profile.sub,
 };
