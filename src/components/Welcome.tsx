@@ -29,7 +29,7 @@ const WelcomeCard = () => {
                 {/* Documentation Link */}
                 <p className="mt-4">
                     <a
-                        href="https://your-api-docs-link.com"
+                        href="https://documenter.getpostman.com/view/14396709/2sAYdcrXVG"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-blue-500 hover:underline font-medium"
