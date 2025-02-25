@@ -10,25 +10,37 @@ export interface TodoProps {
     is_completed: boolean;
 }
 
-const user = getUser();
-
 
 const headers = {
     "Content-Type": "application/json",
-    'Authorization': `Bearer 12345`,
-    'Accept': 'application/json',
-    'userId': user?.profile.sub,
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "Authorization, Content-Type",
+    'Accept': 'application/json'
 };
 
 
 
 const fetchTodos = async (): Promise<TodoProps[]> => {
-    const response = await axios.get(`${BASE_URL}/todos`, {headers});
+    const user  = getUser();
+    const response = await axios.get(`${BASE_URL}/todos`, {
+        headers : {
+            ...headers,
+            'Authorization': `Bearer ${user?.access_token}`,
+            'userId': user?.profile.sub,
+        }
+    });
     return response.data.data;
 };
 
 const deleteTodo = async (taskId: string) => {
-    const response = await axios.delete(`${BASE_URL}/todos/${taskId}`, {headers});
+    const user  = getUser();
+    const response = await axios.delete(`${BASE_URL}/todos/${taskId}`, {
+        headers : {
+            ...headers,
+            'Authorization': `Bearer ${user?.access_token}`,
+            'userId': user?.profile.sub,
+        }
+    });
     return response.status;
 }
 
