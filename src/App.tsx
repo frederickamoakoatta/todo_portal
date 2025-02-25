@@ -9,6 +9,7 @@ import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import {useState} from "react";
 import DevInfoContext from './context/DevInfoContext.ts';
+import IdleLogout from "./components/Idle.tsx";
 
 
 const cognitoAuthConfig = {
@@ -30,6 +31,7 @@ function App() {
             <AuthProvider {...cognitoAuthConfig}>
                 <QueryClientProvider client={queryClient}>
                     <DevInfoContext.Provider value={{displayValue: displayDevInfo, displayFunction: setDisplayDevInfo}}>
+                        <IdleLogout />
                         <Routes>
                             <Route path="/" element={<Home/>}>
                                 <Route index element={<Credentials/>}/>
