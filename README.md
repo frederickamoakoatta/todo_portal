@@ -1,7 +1,7 @@
-# Todo Portal
+ # Todo Portal
 
 ## Overview
-This project is a **Todo Portal** for developers integrating with the **[Todo Service APIs](https://github.com/frederickamoakoatta/todo_service)**. The portal provides an interface to:
+This project is a **Todo Portal** for developers integrating with the **[Todo Service APIs](https://documenter.getpostman.com/view/14396709/2sAYdcrXVG)**. The portal provides an interface to:
 
 - **Obtain a JWT token** via AWS Cognito for API authentication.
 - **Visualize the developer's todo database**, displaying all data stored via the Todo Service API.
